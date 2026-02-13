@@ -6,30 +6,25 @@ import { useState, useCallback } from "react"
  */
 export default function Sidebar({ initialMenuItems }) {
   let [newMenuItem, setNewMenuItem] = useState("")
-  // TODO: 2 Using a state hook, maintain the current menu items as an array state.
+  // TODO: 2 
   let [menuItems, setMenuItems] = useState(initialMenuItems)
   let [filter, setFilter] = useState("")
-  // Adds a single string passed in as parameter to the state element
-  // "menuItems" that holds the set of current menu items.
+
   let addMenuItem = useCallback((item) => {
     console.log("Added menu item")
-    // TODO: 3. Add a new menu item to the correct variable associated with this class.
-    // This involves adding a parameter and changing a class instance variable (props).
+    // TODO: 3.
     setMenuItems(prevMenuItems => [item, ...prevMenuItems])
   }, [])
 
-  // TODO: 4. Display ONLY the menu items that contain the filter element value
-  // "term" in them. Each menu item should be an unordered list item wrapped in an unordered list (ul) element.
-  
-  // Filter menu items based on the filter input (case-insensitive)
+  // TODO: 4.
+  // Filter menu items based on the filter input (case-sensitive)
   const filteredMenuItems = menuItems.filter((item) => {
     if (filter === "") return true
     const regex = new RegExp(filter, "i")
     return regex.test(item)
   })
 
-  // TODO: 1 Render inside the outer div an unordered list of the menu items, with each string in the array
-  // its own item.
+  // TODO: 1 
   return (
     <div>
       <input
@@ -41,7 +36,7 @@ export default function Sidebar({ initialMenuItems }) {
       <br />
       <button
         onClick={() => {
-          /* TODO: 3 */
+
           addMenuItem(newMenuItem)
           setNewMenuItem("")
         }}
